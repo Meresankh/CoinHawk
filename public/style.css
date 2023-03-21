@@ -1,0 +1,12 @@
+/* centre the page */
+body {
+    background-color: #f0f0f0; /* Set the background color to light gray */
+    font-family: Arial, sans-serif; /* Use Arial or a generic sans-serif font */
+    font-size: 16px; /* Set the default font size to 16 pixels */
+  }
+
+/* centre the header text  and make it red */
+h1 {
+    text-align: center;
+    color: red;
+}
