@@ -10,6 +10,8 @@
   "author": "JanMikus",
   "license": "ISC",
   "dependencies": {
+    "daemon": "^1.1.0",
+    "demon": "0.0.1",
     "dependency": "0.0.1",
     "express": "^4.18.2"
   }

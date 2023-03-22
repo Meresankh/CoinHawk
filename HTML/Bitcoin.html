@@ -1,12 +1,33 @@
 <!-- Hello world-->
-<!DOCTYPE html>
-
+<!DOCTYPE html
     <html>
+        <link rel="stylesheet" href="Bitcoin.css">
+        <script src="Bitcoin.js"></script>
     <head>
     <title>Bitcoin</title>
     </head>
     <body>
     <h1>Bitcoin</h1>
-    <p>Hello world</p>
+    <!-- make a note that says "the price is refreshed every 30 seconds"-->
+    <p id="note">The price is refreshed every 30 seconds</p>
+    <!-- create a table-->
+    <table>
+        <tr>
+            <!-- add a logo here-->
+            <th></th>
+            <th>Price</th>
+            <th>24h Volume</th>
+            <th>24h Low</th>
+            <th>24h High</th>
+            <th>24h Change</th>
+        </tr>
+        <tr>
+            <td id="name">Binance</td>
+            <td id="price">$</td>
+            <td id="volume"></td>
+            <td id="low"></td>
+            <td id="high"></td>
+            <td id="change"></td>
+        </tr>
     </body>
     </html>

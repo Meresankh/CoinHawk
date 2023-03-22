@@ -5,4 +5,10 @@ function buttonClicked(event) {
         window.open("Bitcoin.html");
     }
 }
-//when button with id Bitcoin is clicked open up Bitcoin.html
+
+
+
+
+
+//for id price in table in Bitcoin.html 
+
