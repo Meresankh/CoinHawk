@@ -73,57 +73,71 @@ function removeDecimal(string) {
   return newString[0] + "." + newString[1];
 }
 
-//api call for BTC coinbase
-// function coinbase() {
-//   var request = new XMLHttpRequest();
-//   request.open("GET", "https://api.coinbase.com/v2/prices/BTC-USD/spot", true);
-//   request.onload = function () {
-//     var data = JSON.parse(this.response);
-//     if (request.status >= 200 && request.status < 400) {
-//       if (data.data.amount < document.getElementById("price1").innerHTML) {
-//         document.getElementById("price1").style.color = "red";
-//       } else {
-//         document.getElementById("price1").style.color = "green";
-//       }
-//       document.getElementById("price1").innerHTML = data.data.amount + " $";
-//     }
-//   };
-//   request.send();
-// }
-// setInterval(coinbase, 10000);
-// coinbase();
+// //api call for BTC bitstamp using headers
+function bitstamp() {
+  var request = new XMLHttpRequest();
+  request.open("GET", "https://www.bitstamp.net/api/v2/ticker/btcusd/ç", true);
+  request.onload = function () {
+    var data = JSON.parse(this.response);
+    if (request.status >= 200 && request.status < 400) {
+      console.log(data);
+      console.log(data.last);
+      if (data < document.getElementById("price2").innerHTML) {
+        document.getElementById("price2").style.color = "red";
+      } else {
+        document.getElementById("price2").style.color = "green";
+      }
 
-// //api call for BTC bitstamp
-// function bitstamp() {
-//   var request = new XMLHttpRequest();
-//   request.open("GET", "https://www.bitstamp.net/api/v2/ticker/btcusd/", true);
-//   request.onload = function () {
-//     var data = JSON.parse(this.response);
-//     if (request.status >= 200 && request.status < 400) {
-//       console.log(data);
-//       console.log(data.last);
-//       if (data < document.getElementById("price2").innerHTML) {
-//         document.getElementById("price2").style.color = "red";
-//       } else {
-//         document.getElementById("price2").style.color = "green";
-//       }
+      document.getElementById("price2").innerHTML = data.last + " $";
+      document.getElementById("volume2").innerHTML =
+      removeDecimal(data.volume) + " BTC";
+      document.getElementById("low2").innerHTML = data.low + " $";
+      document.getElementById("high2").innerHTML = data.high + " $";
+      document.getElementById("change2").innerHTML =
+        data.percent_change_24 + " %";
 
-//       document.getElementById("price2").innerHTML = data.last + " $";
-//       document.getElementById("volume2").innerHTML =
-//       removeDecimal(data.volume) + " BTC";
-//       document.getElementById("low2").innerHTML = data.low + " $";
-//       document.getElementById("high2").innerHTML = data.high + " $";
-//       document.getElementById("change2").innerHTML =
-//         data.percent_change_24 + " %";
+      if (data.percent_change_24 < 0) {
+        document.getElementById("change2").style.color = "red";
+      } else {
+        document.getElementById("change2").style.color = "green";
+      }
+    }
+  };
+  request.send();
+}
+bitstamp();
+setInterval(bitstamp, 30000);
 
-//       if (data.percent_change_24 < 0) {
-//         document.getElementById("change2").style.color = "red";
-//       } else {
-//         document.getElementById("change2").style.color = "green";
-//       }
-//     }
-//   };
-//   request.send();
-// }
-// bitstamp();
-// setInterval(bitstamp, 30000);
+//api call to this link https://api.kucoin.com/api/v1/market/stats?symbol=BTC-USDT
+function kucoin() {
+  var request = new XMLHttpRequest();
+  request.open("GET", "https://api.kucoin.com/api/v1/market/stats?symbol=BTC-USDT", true);
+  request.onload = function () {
+    var data = JSON.parse(this.response);
+    if (request.status >= 200 && request.status < 400) {
+      console.log(data);
+      console.log(data.last);
+      if (data < document.getElementById("price3").innerHTML) {
+        document.getElementById("price3").style.color = "red";
+      } else {
+        document.getElementById("price3").style.color = "green";
+      }
+
+      document.getElementById("price3").innerHTML = data.lastPrice + " $";
+      document.getElementById("volume3").innerHTML =
+      removeDecimal(data.volume) + " BTC";
+      document.getElementById("low3").innerHTML = data.low + " $";
+      document.getElementById("high3").innerHTML = data.high + " $";
+      document.getElementById("change3").innerHTML =
+        data.changePrice + " %";
+
+      if (data.changePrice < 0) {
+        document.getElementById("change3").style.color = "red";
+      } else {
+        document.getElementById("change3").style.color = "green";
+      }
+    }
+  };
+  request.send();
+}
+kucoin();
