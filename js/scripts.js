@@ -4,6 +4,9 @@ function buttonClicked(event) {
     if (buttonValue == "Bitcoin") {
         window.open("Bitcoin.html");
     }
+    if (buttonValue == "Ethereum") {
+        window.open("Ethereum.html");
+    }
 }
 
 
