@@ -15,12 +15,16 @@ app.use(express.static(htmlPath));
 app.use(express.static(publicPath));
 app.use(express.static(cssPath));
 app.use(express.static(jsPath));
+console.log(jsPath);
 
-// const cors = require("cors");
-// // const apiRouter = require( './api/routes/api' );
-// require("./api/config/passport");
+// app.use(express.static(path.join(__dirname, '/public')));
 
-// app.use(cors());
+// //app.use(express.static('js'));
+
+// const htmlPath = path.join(__dirname, '/HTML');
+// app.use(express.static(htmlPath));
+
+
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
