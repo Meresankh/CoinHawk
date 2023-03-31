@@ -1,16 +1,18 @@
-h1{
+h1 {
     text-align: center;
     font-size: 50px;
     font-family: 'Roboto', sans-serif;
     margin: 1%;
 }
-table {
+
+/* table {
     border-collapse: collapse;
     width: 100%;
     margin: 1%;
     text-align: center;
-}
-p{
+} */
+
+p {
     text-align: center;
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
@@ -21,39 +23,37 @@ p{
     border-radius: 10px;
 }
 
-#LogoBTC{
+#LogoBTC {
     width: 100px;
     height: 100px;
     margin: 1%;
 }
 
-body{
+body {
     background-color: white;
+
 }
 
-table{
-    margin-right: 1%;
-    margin-left: 1%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    width: 98%;
+#TabelaEth {
+    background-color: rgb(210, 202, 202);
+    width: 100%;
 }
-tbody{
+
+
+tbody {
     background-color: rgb(210, 202, 202);
     color: rgb(59, 65, 65);
-    border-radius: 10px;
-    padding: 1%;
-    margin-right: auto;
-    margin-left: auto;
+    width: 100%;
 }
 
- th{
+th {
     background-color: rgb(42, 159, 159);
-    font-size: 30px;
+    font-size: 40px;
     color: black;
- }
+  
+}
 
- #CoinHawkZacetna {
+#CoinHawkZacetna {
     text-align: center;
     font-size: 50px;
     font-family: 'Roboto', sans-serif;
@@ -66,14 +66,21 @@ tbody{
     display: block;
     margin-right: auto;
     margin-left: auto;
- }
+}
 
- /* on hover, change the color of the button */
-    #CoinHawkZacetna:hover {
-        background-color: rgb(42, 159, 159);
-        color: white;
-        cursor: pointer;
-        /* make the button smaller */
-        transform: scale(1.1);
+/* on hover, change the color of the button */
+#CoinHawkZacetna:hover {
+    background-color: rgb(42, 159, 159);
+    color: white;
+    cursor: pointer;
+    /* make the button smaller */
+    transform: scale(1.1);
 
-    }
+}
+
+td {
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    background: rgb(210, 202, 202);
+}

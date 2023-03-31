@@ -2,78 +2,44 @@
 function goBack() {
     window.history.back();
   }
-  
-  
-  var request = new XMLHttpRequest();
-  request.open(
-    "GET",
-    "https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT",
-    true
-  );
-  request.onload = function () {
-    var data = JSON.parse(this.response);
-    if (request.status >= 200 && request.status < 400) {
-      var lastPrice = removeDecimal(data.lastPrice);
-      var volume = removeDecimal(data.volume);
-      var lowPrice = removeDecimal(data.lowPrice);
-      var highPrice = removeDecimal(data.highPrice);
-      var priceChangePercent = data.priceChangePercent;
-  
-      document.getElementById("price").innerHTML = lastPrice + " $";
-      document.getElementById("volume").innerHTML = volume + " ETH";
-      document.getElementById("low").innerHTML = lowPrice + " $";
-      document.getElementById("high").innerHTML = highPrice + " $";
-      document.getElementById("change").innerHTML = priceChangePercent + " %";
-  
-      if (priceChangePercent < 0) {
-        document.getElementById("change").style.color = "red";
-      } else {
-        document.getElementById("change").style.color = "green";
-      }
-    }
+
+//on load of the page call function bitstamp
+window.onload = function () {
+    binance();
+    bitstamp();
+    kraken();
   };
-  request.send();
-  
-  setInterval(function () {
+
+
+//api call to binance for ETH
+function binance() {
     var request = new XMLHttpRequest();
-    request.open(
-      "GET",
-      "https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT",
-      true
-    );
+    request.open("GET", "https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT", true);
     request.onload = function () {
       var data = JSON.parse(this.response);
       if (request.status >= 200 && request.status < 400) {
-        var old = document.getElementById("price").innerHTML;
-        var newPrice = removeDecimal(data.lastPrice);
-  
-        //if the price has changed, change the color of the price for 2 seconds
-  
-        document.getElementById("price").innerHTML = newPrice + " $";
-        console.log(old - newPrice);
-        if (old > newPrice && newPrice != 0) {
-          document.getElementById("price").style.color = "red";
-          setTimeout(function () {
-            document.getElementById("price").style.color = "black";
-          }, 1000);
-        } else {
-          document.getElementById("price").style.color = "green";
-          setTimeout(function () {
-              document.getElementById("price").style.color = "black";
-            }, 1000);
-        }
-  
+        var currPrice = removeDecimal(data.lastPrice);
+        console.log(data);
+        document.getElementById("price").innerHTML = currPrice + " $";
         document.getElementById("volume").innerHTML =
-          removeDecimal(data.volume) + " ETH";
-        document.getElementById("change").innerHTML =
-          data.priceChangePercent + " %";
+        removeDecimal(data.volume) + " ETH";
+        document.getElementById("low").innerHTML = data.lowPrice + " $";
+        document.getElementById("high").innerHTML = data.highPrice + " $";
+        document.getElementById("change").innerHTML = data.priceChangePercent + "% " + "(" + removeDecimal(data.priceChange) + " $ )";
+
+        if (data.priceChangePercent < 0) {
+          document.getElementById("change").style.color = "red";
+        } else {
+          document.getElementById("change").style.color = "green";
+        }
       }
     };
     request.send();
-  }, 30000);
-  
-  
-  // //api call for BTC bitstamp using headers
+  }
+  setInterval(binance, 30000);
+
+
+
   function bitstamp() {
     var request = new XMLHttpRequest();
     request.open("GET", "https://www.bitstamp.net/api/v2/ticker/ethusd/Jan", true);
@@ -97,7 +63,6 @@ function goBack() {
     };
     request.send();
   }
-  bitstamp();
   setInterval(bitstamp, 30000);
 
 //api call to kraken for ETH
@@ -125,7 +90,7 @@ function kraken() {
     };
     request.send();
   }
-  kraken();
+  setInterval(kraken, 30000);
 
 
 
