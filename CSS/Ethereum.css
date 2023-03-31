@@ -45,11 +45,35 @@ tbody{
     padding: 1%;
     margin-right: auto;
     margin-left: auto;
-    
 }
 
  th{
     background-color: rgb(42, 159, 159);
-    
-
+    font-size: 30px;
+    color: black;
  }
+
+ #CoinHawkZacetna {
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Roboto', sans-serif;
+    margin: 1%;
+    color: rgb(59, 65, 65);
+    padding: 1%;
+    border-radius: 10px;
+    background-color: rgb(210, 202, 202);
+    /* put the button in the middle */
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+ }
+
+ /* on hover, change the color of the button */
+    #CoinHawkZacetna:hover {
+        background-color: rgb(42, 159, 159);
+        color: white;
+        cursor: pointer;
+        /* make the button smaller */
+        transform: scale(1.1);
+
+    }
